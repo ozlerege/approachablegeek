@@ -22,185 +22,213 @@ class MyApp extends StatelessWidget {
             fontFamily: "NerkoOne",
           ),),
         ),
-        body: Column(
+        body: Stack(
+          alignment: Alignment.center,
           children: [
-            SizedBox(
-              height: 150,
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-            child: TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              cursorColor: Colors.red,
-              style: TextStyle(
-                  color: Colors.deepOrange,
-                  fontFamily: "NerkoOne",
-                fontSize: 20,
-
-              ),
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(23.0),
-                    borderSide: BorderSide(
-                        color: Colors.red,
-                    ),
+            Column(
+              children: [
+                Container(
+                  height: 160,
+                  color: Colors.orange,
+                  child: Center(
+                    child: Text("Banner Goes here"),
                   ),
-                  focusedBorder: OutlineInputBorder(
-
-                    borderRadius: BorderRadius.circular(23.0),
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 3.0,
-                    ),
-                  ),
-                  icon: Icon(
-                    Icons.account_box_outlined,
-                    color:Colors.purple,
-                    size: 30,
-                  ),
-                  hintText: "Enter your name",
-                  hintStyle: TextStyle(
-                    fontSize: 20,
-                    fontFamily: "NerkoOne"
-                  )
                 ),
-              ),
-            ),
+                Expanded(child: Column(
+                children: [SizedBox(
+                  height: 100,
+                ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      cursorColor: Colors.red,
+                      style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontFamily: "NerkoOne",
+                        fontSize: 20,
 
-            SizedBox(
-              height: 35,
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: TextFormField(
-                  keyboardType: TextInputType.phone,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    color: Colors.deepOrange,
-                    fontFamily: "NerkoOne",
-                    fontSize: 20,
+                      ),
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(23.0),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+
+                            borderRadius: BorderRadius.circular(23.0),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                              width: 3.0,
+                            ),
+                          ),
+                          icon: Icon(
+                            Icons.account_box_outlined,
+                            color:Colors.purple,
+                            size: 30,
+                          ),
+                          hintText: "Enter your name",
+                          hintStyle: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "NerkoOne"
+                          )
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: TextFormField(
+                        keyboardType: TextInputType.phone,
+                        cursorColor: Colors.red,
+                        style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontFamily: "NerkoOne",
+                          fontSize: 20,
+
+                        ),
+                        decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(23.0),
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(23.0),
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 3.0,
+                              ),
+                            ),
+                            icon: Icon(
+                              Icons.add_call,
+                              color:Colors.purple,
+                              size: 30,
+                            ),
+                            hintText: "Enter your phone number",
+                            hintStyle: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "NerkoOne"
+                            )
+                        )
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        cursorColor: Colors.red,
+                        style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontFamily: "NerkoOne",
+                          fontSize: 20,
+
+                        ),
+                        decoration: InputDecoration(
+
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(23.0),
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+
+                              borderRadius: BorderRadius.circular(23.0),
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 3.0,
+                              ),
+                            ),
+                            icon: Icon(
+                              Icons.email_outlined,
+                              color:Colors.purple,
+                              size: 30,
+                            ),
+                            hintText: "Enter your e-mail",
+                            hintStyle: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "NerkoOne"
+                            )
+                        )
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+
+
+                    child:
+                    TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        cursorColor: Colors.red,
+                        maxLines: 5,
+                        textAlignVertical: TextAlignVertical.top ,
+                        style: TextStyle(
+
+                          color: Colors.deepOrange,
+                          fontFamily: "NerkoOne",
+                          fontSize: 20,
+
+                        ),
+                        decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(23.0),
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(23.0),
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 3.0,
+                              ),
+                            ),
+                            icon: Icon(
+                              Icons.emoji_people_outlined,
+                              color:Colors.purple,
+                              size: 30,
+                            ),
+                            hintText: "Enter Your Bio",
+                            hintStyle: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "NerkoOne"
+                            )
+                        )
+                    ),
 
                   ),
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 3.0,
-                        ),
-                      ),
-                      icon: Icon(
-                        Icons.add_call,
-                        color:Colors.purple,
-                        size: 30,
-                      ),
-                      hintText: "Enter your phone number",
-                      hintStyle: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "NerkoOne"
-                      )
-                  )
+
+                ],
+                ))
+              ],
+
+            ),
+            Positioned(
+              top: 100,
+                child: Container(
+              height: 150,
+              width: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.green,
               ),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    color: Colors.deepOrange,
-                    fontFamily: "NerkoOne",
-                    fontSize: 20,
+            ))
+          ],
+        )
 
-                  ),
-                  decoration: InputDecoration(
-
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-
-                        borderRadius: BorderRadius.circular(23.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 3.0,
-                        ),
-                      ),
-                      icon: Icon(
-                        Icons.email_outlined,
-                        color:Colors.purple,
-                        size: 30,
-                      ),
-                      hintText: "Enter your e-mail",
-                      hintStyle: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "NerkoOne"
-                      )
-                  )
-              ),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-
-
-              child:
-              TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Colors.red,
-                  maxLines: 5,
-                  textAlignVertical: TextAlignVertical.top ,
-                  style: TextStyle(
-
-                    color: Colors.deepOrange,
-                    fontFamily: "NerkoOne",
-                    fontSize: 20,
-
-                  ),
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 3.0,
-                        ),
-                      ),
-                      icon: Icon(
-                        Icons.email_outlined,
-                        color:Colors.purple,
-                        size: 30,
-                      ),
-                      hintText: "Enter Your Bio",
-                      hintStyle: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "NerkoOne"
-                      )
-                  )
-              ),
-
-          ),
-]
-      ),
       ),
     );
   }
