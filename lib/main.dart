@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,6 +9,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
           children: [
             Column(
               children: [
+
                 Container(
                   height: 160,
                   color: Colors.orange,
@@ -34,9 +38,12 @@ class MyApp extends StatelessWidget {
                     child: Text("Banner Goes here"),
                   ),
                 ),
+
+
                 Expanded(child: Column(
-                children: [SizedBox(
-                  height: 100,
+                children: [
+                  SizedBox(
+                  height: 120,
                 ),
                   Padding(
                     padding: EdgeInsets.all(10),
@@ -218,21 +225,42 @@ class MyApp extends StatelessWidget {
             ),
             Positioned(
               top: 100,
-                child: Container(
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.green,
-              ),
-            ))
+                child: Column(
+                  children: [
+                    InkWell(
+                      customBorder:const CircleBorder(),
+                      hoverColor: Colors.yellow,
+                      child: Container(
+
+                        height: 150,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.green,
+                        ),
+                      ),
+                      onTap: (){
+                        print("Pressed");
+
+                      },
+                    ),
+
+
+
+                  ],
+                )
+                )
           ],
         )
 
       ),
     );
   }
-}
+
+  }
+
+
+
 
 
 
