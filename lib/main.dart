@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 void main() {
@@ -15,6 +16,22 @@ void main() {
   }
 
   class _MyAppState extends State<MyApp> {
+    File? images;
+
+    Future pickImage() async {
+      try {
+        final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+        if(image == null) return;
+
+        final imageTemp = File(image.path);
+
+        setState(() => this.images = imageTemp);
+      } on PlatformException catch(e) {
+        print('Failed to pick image: $e');
+      }
+
+    }
     @override
     Widget build(BuildContext context) {
       return MaterialApp(
@@ -234,17 +251,17 @@ void main() {
                         InkWell(
                           customBorder:const CircleBorder(),
                           hoverColor: Colors.yellow,
-                          child: Container(
-
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.green,
-                            ),
+                          child: CircleAvatar(
+                            radius: 75,
+                              backgroundImage: images != null?
+                            FileImage(images!):
+                            NetworkImage("https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg") as ImageProvider
                           ),
+
+
                           onTap: () async {
                             print("Pressed");
+                            pickImage();
 
 
                           },
