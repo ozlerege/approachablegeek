@@ -17,6 +17,7 @@ void main() {
 
   class _MyAppState extends State<MyApp> {
     File? images;
+    File? banner_images;
 
     Future pickImage() async {
       try {
@@ -27,6 +28,20 @@ void main() {
         final imageTemp = File(image.path);
 
         setState(() => this.images = imageTemp);
+      } on PlatformException catch(e) {
+        print('Failed to pick image: $e');
+      }
+
+    }
+    Future pickBannerImage() async {
+      try {
+        final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+        if(image == null) return;
+
+        final imageTemp = File(image.path);
+
+        setState(() => this.banner_images = imageTemp);
       } on PlatformException catch(e) {
         print('Failed to pick image: $e');
       }
@@ -51,14 +66,32 @@ void main() {
               children: [
                 Column(
                   children: [
+                  InkWell(
+                    customBorder: const RoundedRectangleBorder(),
+                    child: Container(
+                      height: 170,
+                      width: 650,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                              scale: 3.5,
+                              image: banner_images != null?
+                              FileImage(banner_images!):
+                              NetworkImage("https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg") as ImageProvider
+                          )
 
-                    Container(
-                      height: 160,
-                      color: Colors.orange,
-                      child: Center(
-                        child: Text("Banner Goes here"),
                       ),
+
+
                     ),
+                    onTap: () async {
+                      print("Pressed");
+                      pickBannerImage();
+
+
+                    },
+                  ),
+
 
 
                     Expanded(child: Column(
@@ -252,10 +285,15 @@ void main() {
                           customBorder:const CircleBorder(),
                           hoverColor: Colors.yellow,
                           child: CircleAvatar(
+                            backgroundColor: Colors.red,
                             radius: 75,
-                              backgroundImage: images != null?
-                            FileImage(images!):
-                            NetworkImage("https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg") as ImageProvider
+                              child: CircleAvatar(
+                                radius: 73,
+                                  backgroundImage: images != null?
+                                  FileImage(images!):
+                                  NetworkImage("https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg") as ImageProvider
+                              ),
+
                           ),
 
 
