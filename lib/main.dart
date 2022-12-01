@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
                     color:Colors.purple,
                     size: 30,
                   ),
-                  hintText: "Approachable Geek",
+                  hintText: "Enter your name",
                   hintStyle: TextStyle(
                     fontSize: 20,
                     fontFamily: "NerkoOne"
@@ -100,7 +100,7 @@ class MyApp extends StatelessWidget {
                         color:Colors.purple,
                         size: 30,
                       ),
-                      hintText: "05334313224",
+                      hintText: "Enter your phone number",
                       hintStyle: TextStyle(
                           fontSize: 20,
                           fontFamily: "NerkoOne"
@@ -143,7 +143,7 @@ class MyApp extends StatelessWidget {
                         color:Colors.purple,
                         size: 30,
                       ),
-                      hintText: "ozlerrege@gmail.com",
+                      hintText: "Enter your e-mail",
                       hintStyle: TextStyle(
                           fontSize: 20,
                           fontFamily: "NerkoOne"
@@ -162,10 +162,10 @@ class MyApp extends StatelessWidget {
               TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   cursorColor: Colors.red,
-                  cursorHeight: 5,
-                  textAlign: TextAlign.left,
+                  maxLines: 5,
+                  textAlignVertical: TextAlignVertical.top ,
                   style: TextStyle(
-                    height: 6,
+
                     color: Colors.deepOrange,
                     fontFamily: "NerkoOne",
                     fontSize: 20,
@@ -190,7 +190,7 @@ class MyApp extends StatelessWidget {
                         color:Colors.purple,
                         size: 30,
                       ),
-                      hintText: "My bio",
+                      hintText: "Enter Your Bio",
                       hintStyle: TextStyle(
                           fontSize: 20,
                           fontFamily: "NerkoOne"
