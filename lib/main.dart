@@ -46,9 +46,11 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
+
                     borderRadius: BorderRadius.circular(23.0),
                     borderSide: BorderSide(
                       color: Colors.red,
+                      width: 3.0,
                     ),
                   ),
                   icon: Icon(
@@ -90,6 +92,7 @@ class MyApp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(23.0),
                         borderSide: BorderSide(
                           color: Colors.red,
+                          width: 3.0,
                         ),
                       ),
                       icon: Icon(
@@ -120,6 +123,7 @@ class MyApp extends StatelessWidget {
 
                   ),
                   decoration: InputDecoration(
+
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(23.0),
                         borderSide: BorderSide(
@@ -127,9 +131,11 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
+
                         borderRadius: BorderRadius.circular(23.0),
                         borderSide: BorderSide(
                           color: Colors.red,
+                          width: 3.0,
                         ),
                       ),
                       icon: Icon(
@@ -150,10 +156,16 @@ class MyApp extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(10),
-              child: TextFormField(
+
+
+              child:
+              TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   cursorColor: Colors.red,
+                  cursorHeight: 5,
+                  textAlign: TextAlign.left,
                   style: TextStyle(
+                    height: 6,
                     color: Colors.deepOrange,
                     fontFamily: "NerkoOne",
                     fontSize: 20,
@@ -170,6 +182,7 @@ class MyApp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(23.0),
                         borderSide: BorderSide(
                           color: Colors.red,
+                          width: 3.0,
                         ),
                       ),
                       icon: Icon(
@@ -184,10 +197,10 @@ class MyApp extends StatelessWidget {
                       )
                   )
               ),
-            ),
-          ],
 
-        ),
+          ),
+]
+      ),
       ),
     );
   }
