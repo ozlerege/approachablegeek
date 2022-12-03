@@ -2,21 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-
+import 'package:approachablegeek/name.dart';
+import 'data.dart';
+import 'package:approachablegeek/email.dart';
+import 'package:approachablegeek/phone.dart';
+import 'package:approachablegeek/bio.dart';
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MaterialApp(home:
+  MyApp(),));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+   MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
+
 }
 
 class _MyAppState extends State<MyApp> {
   File? images;
   File? banner_images;
+  String email = '';
+  String bio = '';
+  String name = '';
+  String phone = '';
+
+
 
   Future pickImage() async {
     try {
@@ -48,31 +61,28 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: MaterialApp(
-            home: Scaffold(
-          backgroundColor: Colors.white,
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-
-            centerTitle: true,
-            backgroundColor: Colors.purple,
-            title: Text(
-              "Profile",
-              style: TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.w800,
-                fontFamily: "NerkoOne",
-              ),
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.purple,
+          title: Text(
+            "Profile",
+            style: TextStyle(
+              fontSize: 45,
+              fontWeight: FontWeight.w800,
+              fontFamily: "NerkoOne",
             ),
           ),
-          body: Stack(
-            alignment: Alignment.center,
+        ),
+        body: Container(
+          child: Column(
             children: [
-              Column(
+              Stack(
+                clipBehavior: Clip.none,
+                alignment: Alignment.center,
                 children: [
                   InkWell(
                     customBorder: const RoundedRectangleBorder(),
@@ -86,195 +96,313 @@ class _MyAppState extends State<MyApp> {
                               image: banner_images != null
                                   ? FileImage(banner_images!)
                                   : NetworkImage(
-                                          "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg")
-                                      as ImageProvider)),
+                                  "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg")
+                              as ImageProvider)),
                     ),
                     onTap: () async {
                       pickBannerImage();
                     },
                   ),
-                  Expanded(
+                  Positioned(
+                      top: 100,
                       child: Column(
-                    children: [
-                      SizedBox(
-                        height: 100,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          cursorColor: Colors.deepPurple,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: "NerkoOne",
-                            fontSize: 25,
+                        children: [
+                          InkWell(
+                            customBorder: const CircleBorder(),
+                            hoverColor: Colors.yellow,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.purple,
+                              radius: 75,
+                              child: CircleAvatar(
+                                  radius: 73,
+                                  backgroundImage: images != null
+                                      ? FileImage(images!)
+                                      : NetworkImage(
+                                      "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg")
+                                  as ImageProvider),
+                            ),
+                            onTap: () async {
+                              print("Pressed");
+                              pickImage();
+                            },
                           ),
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(23.0),
-                                borderSide: BorderSide(
-                                  color: Colors.purple,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(23.0),
-                                borderSide: BorderSide(
-                                  color: Colors.deepPurpleAccent,
-                                  width: 3.0,
-                                ),
-                              ),
-                              icon: Icon(
-                                Icons.account_box_outlined,
-                                color: Colors.purple,
-                                size: 30,
-                              ),
-                              hintText: "Enter your name",
-                              hintStyle: TextStyle(
-                                  fontSize: 25, fontFamily: "NerkoOne")),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TextFormField(
-                            keyboardType: TextInputType.phone,
-                            cursorColor: Colors.deepPurple,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: "NerkoOne",
-                              fontSize: 25,
-                            ),
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(23.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.purple,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(23.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.deepPurpleAccent,
-                                    width: 3.0,
-                                  ),
-                                ),
-                                icon: Icon(
-                                  Icons.add_call,
-                                  color: Colors.purple,
-                                  size: 30,
-                                ),
-
-                                hintText: "Enter your phone number",
-                                hintStyle: TextStyle(
-                                    fontSize: 25, fontFamily: "NerkoOne"))),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            cursorColor: Colors.deepPurple,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: "NerkoOne",
-                              fontSize: 25,
-                            ),
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(23.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.purple,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(23.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.deepPurpleAccent,
-                                    width: 3.0,
-                                  ),
-                                ),
-                                icon: Icon(
-                                  Icons.email_outlined,
-                                  color: Colors.purple,
-                                  size: 30,
-                                ),
-                                hintText: "Enter your e-mail",
-                                hintStyle: TextStyle(
-                                    fontSize: 25, fontFamily: "NerkoOne"))),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            cursorColor: Colors.purple,
-                            maxLines: 5,
-                            textAlignVertical: TextAlignVertical.top,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: "NerkoOne",
-                              fontSize: 23,
-                            ),
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(23.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.purple,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(23.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.deepPurpleAccent,
-                                    width: 3.0,
-                                  ),
-                                ),
-                                icon: Icon(
-                                  Icons.emoji_people_outlined,
-                                  color: Colors.purple,
-                                  size: 30,
-                                ),
-                                hintText: "Enter Your Bio",
-                                hintStyle: TextStyle(
-                                    fontSize: 25, fontFamily: "NerkoOne"))),
-                      ),
-                    ],
-                  ))
+                        ],
+                      ))
                 ],
               ),
-              Positioned(
-                  top: 100,
-                  child: Column(
-                    children: [
-                      InkWell(
-                        customBorder: const CircleBorder(),
-                        hoverColor: Colors.yellow,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 75,
-                          child: CircleAvatar(
-                              radius: 73,
-                              backgroundImage: images != null
-                                  ? FileImage(images!)
-                                  : NetworkImage(
-                                          "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg")
-                                      as ImageProvider),
+              SizedBox(
+                height: 120,
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: InkWell(
+                  onTap: () {
+                    _navigateTheResults(context);
+
+                  },
+                  splashColor: Colors.purple,
+                  child: Container(
+                    height: 60,
+                    width: 350,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
                         ),
-                        onTap: () async {
-                          print("Pressed");
-                          pickImage();
-                        },
-                      ),
-                    ],
-                  ))
+                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.account_box_outlined,
+                            color: Colors.purple,
+                            size: 30),
+                        SizedBox(width: 5,),
+                        RichText(
+                            text: new TextSpan(
+                                style: new TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.purple,
+                                ),
+                                children: <TextSpan>[
+                                  new TextSpan(
+                                      text: "Name : ",
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+                                  new TextSpan(
+                                      text: name,
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+
+                                ]
+                            )),
+
+
+                      ],
+
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: InkWell(
+                  onTap: () {
+                    _navigateTheResultsEmail(context);
+
+                  },
+                  splashColor: Colors.purple,
+                  child: Container(
+                    height: 60,
+                    width: 350,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.mail,
+                            color: Colors.purple,
+                            size: 30),
+                        SizedBox(width: 5,),
+                        RichText(
+                            text: new TextSpan(
+                                style: new TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.purple,
+                                ),
+                                children: <TextSpan>[
+                                  new TextSpan(
+                                      text: "E-mail : ",
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+                                  new TextSpan(
+                                      text: email,
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+
+                                ]
+                            )),
+
+
+                      ],
+
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: InkWell(
+                  onTap: () {
+                    _navigateTheResultsPhone(context);
+
+                  },
+                  splashColor: Colors.purple,
+                  child: Container(
+                    height: 60,
+                    width: 350,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.mail,
+                            color: Colors.purple,
+                            size: 30),
+                        SizedBox(width: 5,),
+                        RichText(
+                            text: new TextSpan(
+                                style: new TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.purple,
+                                ),
+                                children: <TextSpan>[
+                                  new TextSpan(
+                                      text: "Phone : ",
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+                                  new TextSpan(
+                                      text: phone,
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+
+                                ]
+                            )),
+
+
+                      ],
+
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: InkWell(
+                  onTap: () {
+                    _navigateTheResultsBio(context);
+
+                  },
+                  splashColor: Colors.purple,
+                  child: Container(
+                    height: 80,
+                    width: 350,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.mail,
+                            color: Colors.purple,
+                            size: 30),
+                        SizedBox(width: 5,),
+                        RichText(
+                            text: new TextSpan(
+                                style: new TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.purple,
+                                ),
+                                children: <TextSpan>[
+                                  new TextSpan(
+                                      text: "Bio : ",
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 25,
+                                      )
+                                  ),
+                                  new TextSpan(
+                                      text: bio,
+                                      style: TextStyle(
+                                        color: Colors.purple,
+                                        fontFamily: "NerkoOne",
+                                        fontSize: 15,
+                                      )
+                                  ),
+
+                                ]
+                            )),
+
+
+                      ],
+
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
-        )));
+        ),
+      ),
+    );
+
   }
+  _navigateTheResults(BuildContext context) async{
+    final res = await Navigator.push(context,MaterialPageRoute(builder: (context) => namePage()));
+
+    setState(() {
+      name = res;
+    });
+  }
+  _navigateTheResultsEmail(BuildContext context) async{
+    final res = await Navigator.push(context,MaterialPageRoute(builder: (context) => emailPage()));
+
+    setState(() {
+      email = res;
+    });
+  }
+  _navigateTheResultsPhone(BuildContext context) async{
+    final res = await Navigator.push(context,MaterialPageRoute(builder: (context) => phonePage()));
+
+    setState(() {
+      phone = res;
+    });
+  }
+  _navigateTheResultsBio(BuildContext context) async{
+    final res = await Navigator.push(context,MaterialPageRoute(builder: (context) => bioPage()));
+
+    setState(() {
+      bio = res;
+    });
+  }
+
+
+
 }
