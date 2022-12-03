@@ -272,7 +272,7 @@ class _MyAppState extends State<MyApp> {
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.mail,
+                        Icon(Icons.phone,
                             color: Colors.purple,
                             size: 30),
                         SizedBox(width: 5,),
@@ -329,11 +329,11 @@ class _MyAppState extends State<MyApp> {
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.mail,
+                        Icon(Icons.emoji_people_outlined,
                             color: Colors.purple,
                             size: 30),
                         SizedBox(width: 5,),
-                        RichText(
+                        Flexible(child: RichText(
                             text: new TextSpan(
                                 style: new TextStyle(
                                   fontSize: 24,
@@ -358,7 +358,8 @@ class _MyAppState extends State<MyApp> {
                                   ),
 
                                 ]
-                            )),
+                            )))
+                        ,
 
 
                       ],

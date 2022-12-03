@@ -40,6 +40,7 @@ class _bioPageState extends State<bioPage> {
             child: TextFormField(
               keyboardType: TextInputType.emailAddress,
               cursorColor: Colors.deepPurple,
+              maxLines: 5,
               onChanged: (value){
                 bio = value;
               },

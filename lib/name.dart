@@ -112,7 +112,7 @@ class _namePageState extends State<namePage> {
               ),),
               icon: Icon(Icons.save_alt,color: Colors.white),
               onPressed: (){
-                String full_name = first_name + last_name;
+                String full_name = first_name + " " + last_name;
                 Navigator.pop(context, full_name);
               },
 
