@@ -38,6 +38,7 @@ class _bioPageState extends State<bioPage> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextFormField(
+              maxLength: 100,
               keyboardType: TextInputType.emailAddress,
               cursorColor: Colors.deepPurple,
               maxLines: 5,

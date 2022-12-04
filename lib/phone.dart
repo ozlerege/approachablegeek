@@ -38,6 +38,7 @@ class _phonePageState extends State<phonePage> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextFormField(
+              maxLength: 10,
               keyboardType: TextInputType.phone,
               cursorColor: Colors.deepPurple,
               onChanged: (value){

@@ -156,6 +156,7 @@ class _MyAppState extends State<MyApp> {
                             color: Colors.purple,
                             size: 30),
                         SizedBox(width: 5,),
+                        Flexible(child:
                         RichText(
                             text: new TextSpan(
                                 style: new TextStyle(
@@ -182,6 +183,8 @@ class _MyAppState extends State<MyApp> {
 
                                 ]
                             )),
+                        )
+
 
 
                       ],
@@ -216,7 +219,7 @@ class _MyAppState extends State<MyApp> {
                             color: Colors.purple,
                             size: 30),
                         SizedBox(width: 5,),
-                        RichText(
+                        Flexible(child:RichText(
                             text: new TextSpan(
                                 style: new TextStyle(
                                   fontSize: 24,
@@ -242,6 +245,8 @@ class _MyAppState extends State<MyApp> {
 
                                 ]
                             )),
+                        )
+
 
 
                       ],
@@ -276,6 +281,7 @@ class _MyAppState extends State<MyApp> {
                             color: Colors.purple,
                             size: 30),
                         SizedBox(width: 5,),
+
                         RichText(
                             text: new TextSpan(
                                 style: new TextStyle(
