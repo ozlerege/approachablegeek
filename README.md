@@ -4,8 +4,8 @@ Coding Challenge for Approachable Geek
 
 ## Description
 
-This is the app for social media's profile page where user has ability to change his/her profile picture, 
-banner picture, name, e-mail, phone, and bio. 
+This is the app for social media's profile page where user has ability to change his/her profile picture,
+banner picture, name, e-mail, phone, and bio.
 
 ## Copying this work to your repository
 1. With the cloning process, you can download a remote Git repository to your own computer. After cloning the remote repository, all changes will now be saved in the clone Git repository on our computer, until you write our changes back to the remote repository with the git push command.
@@ -16,7 +16,14 @@ banner picture, name, e-mail, phone, and bio.
 
 ## How to change profile and banner picture
 
+You can change both banner and profile picture by simply clicking on top the profile and banner.
+
+
+https://user-images.githubusercontent.com/54779435/205457154-172ebf9a-bc03-4b56-91ec-99217df93a23.mp4
 
 
 ## How to change profile info
 
+You can change profile info by clicking the each row.
+
+https://user-images.githubusercontent.com/54779435/205457688-e1c25159-b2cd-4024-a00c-2ac2c00c4dde.mp4
