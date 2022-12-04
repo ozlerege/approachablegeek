@@ -14,6 +14,11 @@ banner picture, name, e-mail, phone, and bio.
 4. After you clone the file into your repository, the cloned file can be attached to the repository you just created by executing the following command: `git remote set-url origin https://www.github.com/{github_username}/coding_project_ege.git`
 5. You can connect the local repo with the remote repo with the command. `git push origin main`. When you refresh your repository on GitHub, you can now see the files that are cloned into your repository on GitHub
 
+## Required Installation
+
+Inside the fonts file, there is a NerkoOne font family file. Please change the pwd inside the pubspec.yaml from 
+asset: /Users/egeozler/Developer/ApproachableGeek/lib/fonts/NerkoOne-Regular.ttf to asset: {your_path}/lib/fonts/NerkoOne-Regular.ttf
+
 ## How to change profile and banner picture
 
 You can change both banner and profile picture by simply clicking on top the profile and banner.
